@@ -1,6 +1,6 @@
 package com.company.service;
 
-import com.company.dto.Mail;
+import com.company.dto.MailDTO;
 import com.company.dto.StudentDTO;
 import com.company.entity.StudentEntity;
 import com.company.enums.StudentStatus;
@@ -104,7 +104,7 @@ public class StudentService {
     public void sendMessage(String to) {
         Optional<StudentEntity> entity = studentRepository.findByEmail(to);
         if (entity.isPresent()) {
-            Mail mail = new Mail();
+            MailDTO mail = new MailDTO();
             mail.setFrom("lefree111@mail.ru");
             mail.setTo(to);
             mail.setSubject("Welcome ATMOS traning center");

@@ -1,6 +1,6 @@
 package com.company.service;
 
-import com.company.dto.Mail;
+import com.company.dto.MailDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -12,7 +12,7 @@ public class EmailService {
     @Autowired
     private JavaMailSender emailSender;
 
-    public void sendSimpleMessage(final Mail mail) {
+    public void sendSimpleMessage(final MailDTO mail) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setSubject(mail.getSubject());
         message.setText(mail.getContent());
