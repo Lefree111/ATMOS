@@ -1,0 +1,17 @@
+# application.yml - # application.properties - Sending Simple Email with JavaMailSender Example
+
+spring:
+  mail:
+    default-encoding: UTF-8
+    host: smtp.mail.ru
+    username: lefree111@mail.ru
+    password: jRAPGfZbsjsrX3B7mNdr
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    protocol: smtp
+    test-connection: false
