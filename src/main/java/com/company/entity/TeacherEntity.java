@@ -1,6 +1,7 @@
 package com.company.entity;
 
 import com.company.enums.StudentStatus;
+import com.company.enums.TeacherStatus;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -33,7 +34,7 @@ public class TeacherEntity {
     private Integer sale;
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
-    private StudentStatus status;
+    private TeacherStatus status;
     @Column
     private LocalDateTime createDate;
     @Column
