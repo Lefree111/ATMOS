@@ -1,5 +1,6 @@
 package com.company.service;
 
+import com.company.dto.Mail;
 import com.company.dto.StudentDTO;
 import com.company.entity.StudentEntity;
 import com.company.enums.StudentStatus;
@@ -15,8 +16,11 @@ import java.util.Optional;
 
 @Service
 public class StudentService {
+
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private EmailService emailService;
 
     //TODO create finish chack on
     public StudentDTO create(StudentDTO dto) {
@@ -96,6 +100,21 @@ public class StudentService {
         return n > 0;
     }
 
+    //TODO sendMessage finish chack on
+    public void sendMessage(String to) {
+        Optional<StudentEntity> entity = studentRepository.findByEmail(to);
+        if (entity.isPresent()) {
+            Mail mail = new Mail();
+            mail.setFrom("lefree111@mail.ru");
+            mail.setTo(to);
+            mail.setSubject("Welcome ATMOS traning center");
+            mail.setContent("Your Password: " + entity.get().getPassword());
+            emailService.sendSimpleMessage(mail);
+        } else {
+            throw new ItemNotFoundExseption("Student not found");
+        }
+    }
+
     public StudentDTO toDTO(StudentEntity entity) {
         StudentDTO dto = new StudentDTO();
         dto.setId(entity.getId());
@@ -110,5 +129,4 @@ public class StudentService {
         dto.setUpdateDate(entity.getUpdateDate());
         return dto;
     }
-
 }

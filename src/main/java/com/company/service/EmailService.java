@@ -1,6 +1,6 @@
-package com.company.zaybal;
+package com.company.service;
 
-import lombok.SneakyThrows;
+import com.company.dto.Mail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -12,7 +12,6 @@ public class EmailService {
     @Autowired
     private JavaMailSender emailSender;
 
-    @SneakyThrows
     public void sendSimpleMessage(final Mail mail) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setSubject(mail.getSubject());
@@ -21,5 +20,4 @@ public class EmailService {
         message.setFrom(mail.getFrom());
         emailSender.send(message);
     }
-
 }

@@ -1,4 +1,4 @@
-package com.company.zaybal;
+package com.company.dto;
 
 public class Mail {
 
