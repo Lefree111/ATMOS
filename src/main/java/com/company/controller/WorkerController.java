@@ -1,24 +1,25 @@
 package com.company.controller;
 
-import com.company.dto.TeacherDTO;
-import com.company.service.TeacherService;
+import com.company.dto.WorkerDTO;
+import com.company.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/teacher")
-public class TeacherController {
+public class WorkerController {
+
     @Autowired
-    private TeacherService teacherService;
+    private WorkerService teacherService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody TeacherDTO dto) {
+    public ResponseEntity<?> create(@RequestBody WorkerDTO dto) {
         return ResponseEntity.ok(teacherService.create(dto));
     }
 
     @PutMapping("/update/{phone}")
-    public ResponseEntity<?> update(@RequestBody TeacherDTO dto, @PathVariable("phone") Integer phone) {
+    public ResponseEntity<?> update(@RequestBody WorkerDTO dto, @PathVariable("phone") Integer phone) {
         return ResponseEntity.ok(teacherService.update(dto, phone));
     }
 

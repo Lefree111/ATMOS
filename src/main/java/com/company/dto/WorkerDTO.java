@@ -1,12 +1,14 @@
 package com.company.dto;
 
-import com.company.enums.TeacherStatus;
+import com.company.enums.WorkerStatus;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-public class TeacherDTO {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class WorkerDTO {
     private String id;
     private String name;
     private String surname;
@@ -15,7 +17,7 @@ public class TeacherDTO {
     private String email;
     private String expert;
     private Integer sale;
-    private TeacherStatus status;
+    private WorkerStatus status;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 }

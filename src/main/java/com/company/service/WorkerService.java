@@ -1,11 +1,11 @@
 package com.company.service;
 
-import com.company.dto.TeacherDTO;
-import com.company.entity.TeacherEntity;
-import com.company.enums.TeacherStatus;
+import com.company.dto.WorkerDTO;
+import com.company.entity.WorkerEntity;
+import com.company.enums.WorkerStatus;
 import com.company.exp.ItemNotFoundExseption;
-import com.company.exp.TeacherAlreadyCreatedException;
-import com.company.repository.TeacherRepository;
+import com.company.exp.WorkerAlreadyCreatedException;
+import com.company.repository.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,22 +13,22 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
-public class TeacherService {
+public class WorkerService {
     @Autowired
-    private TeacherRepository teacherRepository;
+    private WorkerRepository teacherRepository;
 
-    //TODO create finish chack not
-    public TeacherDTO create(TeacherDTO dto){
-        Optional<TeacherEntity> optional1 = teacherRepository.findByEmail(dto.getEmail());
+    //TODO create finish chack on
+    public WorkerDTO create(WorkerDTO dto){
+        Optional<WorkerEntity> optional1 = teacherRepository.findByEmail(dto.getEmail());
         if (optional1.isPresent()){
-            throw new TeacherAlreadyCreatedException("Teacher already created pls replay");
+            throw new WorkerAlreadyCreatedException("Teacher already created pls replay");
         }
 
-        Optional<TeacherEntity> optional = teacherRepository.findByPhone(dto.getPhone());
+        Optional<WorkerEntity> optional = teacherRepository.findByPhone(dto.getPhone());
         if (optional.isPresent()){
-            throw new TeacherAlreadyCreatedException("Teacher already created pls replay");
+            throw new WorkerAlreadyCreatedException("Teacher already created pls replay");
         }
-        TeacherEntity entity = new TeacherEntity();
+        WorkerEntity entity = new WorkerEntity();
         entity.setName(dto.getName());
         entity.setSurname(dto.getSurname());
         entity.setUsername(dto.getUsername());
@@ -36,49 +36,50 @@ public class TeacherService {
         entity.setEmail(dto.getEmail());
         entity.setExpert(dto.getExpert());
         entity.setSale(dto.getSale());
-        entity.setStatus(TeacherStatus.working);
+        entity.setStatus(WorkerStatus.working);
         entity.setCreateDate(LocalDateTime.now());
         teacherRepository.save(entity);
         return toDTO(entity);
     }
-    //TODO update finish chack not
-    public TeacherDTO update(TeacherDTO dto,Integer phone){
-        Optional<TeacherEntity> optional = teacherRepository.findByPhone(phone);
+    //TODO update finish chack on
+    public WorkerDTO update(WorkerDTO dto, Integer phone){
+        Optional<WorkerEntity> optional = teacherRepository.findByPhone(phone);
         if (optional.isEmpty()){
             throw new ItemNotFoundExseption("Teacher not found");
         }
-        TeacherEntity entity = optional.get();
+        WorkerEntity entity = optional.get();
         entity.setName(dto.getName());
         entity.setSurname(dto.getSurname());
         entity.setUsername(dto.getUsername());
         entity.setPhone(dto.getPhone());
         entity.setEmail(dto.getEmail());
+        entity.setPhone(phone);
         entity.setExpert(dto.getExpert());
         entity.setSale(dto.getSale());
         entity.setUpdateDate(LocalDateTime.now());
         teacherRepository.save(entity);
         return toDTO(entity);
     }
-    //TODO getById finish chack not
-    public TeacherDTO getById(Integer phone){
-        Optional<TeacherEntity> optional = teacherRepository.findByPhone(phone);
+    //TODO getById finish chack on
+    public WorkerDTO getById(Integer phone){
+        Optional<WorkerEntity> optional = teacherRepository.findByPhone(phone);
         if (optional.isEmpty()){
             throw new ItemNotFoundExseption("Teacher not found");
         }
         return toDTO(optional.get());
     }
-    //TODO delete finish chack not
+    //TODO delete finish chack on
     public boolean delete(Integer phone){
-        Optional<TeacherEntity> optional = teacherRepository.findByPhone(phone);
+        Optional<WorkerEntity> optional = teacherRepository.findByPhone(phone);
         if (optional.isEmpty()){
             throw new ItemNotFoundExseption("Teacher not found");
         }
-        int n = teacherRepository.updateStatus(TeacherStatus.no_working,phone);
+        int n = teacherRepository.updateStatus(WorkerStatus.no_working,phone);
         return n > 0;
     }
     //TODO toDTO finish chack on
-    public TeacherDTO toDTO(TeacherEntity entity){
-        TeacherDTO dto = new TeacherDTO();
+    public WorkerDTO toDTO(WorkerEntity entity){
+        WorkerDTO dto = new WorkerDTO();
         dto.setId(entity.getId());
         dto.setName(entity.getName());
         dto.setSurname(entity.getSurname());

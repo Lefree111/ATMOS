@@ -1,17 +1,18 @@
 package com.company.entity;
 
-import com.company.enums.StudentStatus;
-import com.company.enums.TeacherStatus;
-import lombok.Data;
+import com.company.enums.WorkerStatus;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "teacher")
-public class TeacherEntity {
+public class WorkerEntity {
     @Id
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
@@ -34,7 +35,7 @@ public class TeacherEntity {
     private Integer sale;
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
-    private TeacherStatus status;
+    private WorkerStatus status;
     @Column
     private LocalDateTime createDate;
     @Column
