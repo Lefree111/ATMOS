@@ -19,6 +19,7 @@ public class FilialService {
     @Autowired
     private FilialRepository filialRepository;
 
+    //TODO finish chack on
     public FilialDTO create(FilialDTO dto) {
         Optional<FilialEntity> optional = filialRepository.findByName(dto.getName());
         if (optional.isPresent()) {
@@ -33,14 +34,13 @@ public class FilialService {
         filialRepository.save(entity);
         return toDTO(entity);
     }
-
-    public FilialDTO update(FilialDTO dto){
-        Optional<FilialEntity> optional = filialRepository.findByName(dto.getName());
+    //TODO update chack on
+    public FilialDTO update(FilialDTO dto,String name){
+        Optional<FilialEntity> optional = filialRepository.findByName(name);
         if (optional.isEmpty()) {
             throw new ItemNotFoundExseption("Filial not found");
         }
         FilialEntity entity = optional.get();
-        entity.setName(dto.getName());
         entity.setStudent_count(dto.getStudent_count());
         entity.setWorker_count(dto.getWorker_count());
         entity.setStatus(dto.getStatus());
@@ -48,7 +48,7 @@ public class FilialService {
         filialRepository.save(entity);
         return toDTO(entity);
     }
-
+    //TODO getById chack on
     public FilialDTO getById(String name){
         Optional<FilialEntity> optional = filialRepository.findByName(name);
         if (optional.isEmpty()) {
@@ -56,7 +56,7 @@ public class FilialService {
         }
         return toDTO(optional.get());
     }
-
+    //TODO updateStatusFilial chack on
     public Boolean updateStatusFilial(String name){
         Optional<FilialEntity> optional = filialRepository.findByName(name);
         if (optional.isEmpty()) {
@@ -68,7 +68,7 @@ public class FilialService {
         int n = filialRepository.updateStatus(FilialStatus.close,name);
         return n > 0;
     }
-
+    //TODO delete chack on
     public void delete(String name){
         Optional<FilialEntity> optional = filialRepository.findByName(name);
         if (optional.isEmpty()) {
@@ -76,7 +76,7 @@ public class FilialService {
         }
         filialRepository.delete(optional.get());
     }
-
+    //TODO toDTO chack on
     public FilialDTO toDTO(FilialEntity entity) {
         FilialDTO dto = new FilialDTO();
         dto.setId(entity.getId());

@@ -2,11 +2,13 @@ package com.company.service;
 
 import com.company.dto.MailDTO;
 import com.company.dto.StudentDTO;
+import com.company.entity.SendMailEntity;
 import com.company.entity.StudentEntity;
 import com.company.enums.StudentStatus;
 import com.company.exp.ItemNotFoundExseption;
 import com.company.exp.StudentAlreadyCreatedExseption;
 import com.company.exp.StudentStatusChangeExseption;
+import com.company.repository.SendMailRepository;
 import com.company.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,9 @@ public class StudentService {
     private StudentRepository studentRepository;
     @Autowired
     private EmailService emailService;
+    @Autowired
+    private SendMailRepository sendMailRepository;
+
 
     //TODO create finish chack on
     public StudentDTO create(StudentDTO dto) {
@@ -36,6 +41,7 @@ public class StudentService {
         StudentEntity entity = new StudentEntity();
         entity.setName(dto.getName());
         entity.setSurname(dto.getSurname());
+        entity.setUsername(dto.getUsername());
         entity.setEmail(dto.getEmail());
         entity.setPassword(dto.getPassword());
         entity.setPhone(dto.getPhone());
@@ -69,6 +75,7 @@ public class StudentService {
         StudentEntity entity = optional.get();
         entity.setName(dto.getName());
         entity.setSurname(dto.getSurname());
+        entity.setUsername(dto.getUsername());
         entity.setEmail(dto.getEmail());
         entity.setPassword(dto.getPassword());
         entity.setUpdateDate(LocalDateTime.now());
@@ -102,6 +109,7 @@ public class StudentService {
 
     //TODO sendMessage finish chack on
     public void sendMessage(String to) {
+
         Optional<StudentEntity> entity = studentRepository.findByEmail(to);
         if (entity.isPresent()) {
             MailDTO mail = new MailDTO();
@@ -110,6 +118,12 @@ public class StudentService {
             mail.setSubject("Welcome ATMOS traning center");
             mail.setContent("Your Password: " + entity.get().getPassword());
             emailService.sendSimpleMessage(mail);
+            SendMailEntity sendMail = new SendMailEntity();
+            sendMail.setName(entity.get().getName());
+            sendMail.setSurname(entity.get().getSurname());
+            sendMail.setUsername(entity.get().getUsername());
+            sendMail.setSendMailDate(LocalDateTime.now());
+            sendMailRepository.save(sendMail);
         } else {
             throw new ItemNotFoundExseption("Student not found");
         }
@@ -120,6 +134,7 @@ public class StudentService {
         dto.setId(entity.getId());
         dto.setName(entity.getName());
         dto.setSurname(entity.getSurname());
+        dto.setUsername(entity.getUsername());
         dto.setEmail(entity.getEmail());
         dto.setPassword(entity.getPassword());
         dto.setPhone(entity.getPhone());

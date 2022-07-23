@@ -1,6 +1,5 @@
 package com.company.entity;
 
-import com.company.enums.FilialStatus;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -9,8 +8,8 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "filial")
-public class FilialEntity {
+@Table(name = "mail_history")
+public class SendMailEntity {
     @Id
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
@@ -19,19 +18,9 @@ public class FilialEntity {
     @Column
     private String name;
     @Column
-    @Enumerated(EnumType.STRING)
-    private FilialStatus status;
-
-    @Column(name = "student")
-    private Integer student_count;
-
-    @Column(name = "worker")
-    private Integer worker_count;
-
-
+    private String surname;
     @Column
-    private LocalDateTime createDate;
+    private String username;
     @Column
-    private LocalDateTime updateDate;
-
+    private LocalDateTime sendMailDate;
 }

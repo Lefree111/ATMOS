@@ -26,6 +26,8 @@ public class StudentEntity {
     @Column(nullable = false)
     private String surname;
     @Column(nullable = false)
+    private String username;
+    @Column(nullable = false)
     private Integer phone;
     @Column(unique = true, nullable = false)
     private String email;
