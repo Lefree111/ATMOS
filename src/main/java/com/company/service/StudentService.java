@@ -119,6 +119,10 @@ public class StudentService {
             mail.setContent("Your Password: " + entity.get().getPassword());
             emailService.sendSimpleMessage(mail);
             SendMailEntity sendMail = new SendMailEntity();
+            sendMail.setFromAccount("lefree111@mail.ru");
+            sendMail.setToAccount(to);
+            sendMail.setContent("Your Password: " + entity.get().getPassword());
+            sendMail.setSubject("Welcome ATMOS traning center");
             sendMail.setName(entity.get().getName());
             sendMail.setSurname(entity.get().getSurname());
             sendMail.setUsername(entity.get().getUsername());

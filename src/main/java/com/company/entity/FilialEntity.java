@@ -21,14 +21,10 @@ public class FilialEntity {
     @Column
     @Enumerated(EnumType.STRING)
     private FilialStatus status;
-
     @Column(name = "student")
     private Integer student_count;
-
     @Column(name = "worker")
     private Integer worker_count;
-
-
     @Column
     private LocalDateTime createDate;
     @Column

@@ -15,12 +15,20 @@ public class SendMailEntity {
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(name = "id", unique = true)
     private String id;
-    @Column
+    @Column(nullable = false)
     private String name;
-    @Column
+    @Column(nullable = false)
     private String surname;
-    @Column
+    @Column(nullable = false)
     private String username;
-    @Column
+    @Column(nullable = false)
+    private String fromAccount;
+    @Column(nullable = false)
+    private String toAccount;
+    @Column(nullable = false)
+    private String subject;
+    @Column(nullable = false)
+    private String content;
+    @Column(nullable = false)
     private LocalDateTime sendMailDate;
 }
