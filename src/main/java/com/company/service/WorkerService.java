@@ -2,8 +2,10 @@ package com.company.service;
 
 import com.company.dto.WorkerDTO;
 import com.company.entity.WorkerEntity;
+import com.company.enums.FilialStatus;
 import com.company.enums.WorkerStatus;
 import com.company.exp.ItemNotFoundExseption;
+import com.company.exp.StatusNotActiveExseption;
 import com.company.exp.WorkerAlreadyCreatedException;
 import com.company.repository.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +67,9 @@ public class WorkerService {
         Optional<WorkerEntity> optional = teacherRepository.findByPhone(phone);
         if (optional.isEmpty()){
             throw new ItemNotFoundExseption("Teacher not found");
+        }
+        if (optional.get().getStatus().equals(WorkerStatus.no_working)){
+            throw new StatusNotActiveExseption("Status not active");
         }
         return toDTO(optional.get());
     }

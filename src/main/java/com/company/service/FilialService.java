@@ -6,6 +6,7 @@ import com.company.enums.FilialStatus;
 import com.company.exp.FilialAlreadyCreatedExseption;
 import com.company.exp.FilialStatusChangeExseption;
 import com.company.exp.ItemNotFoundExseption;
+import com.company.exp.StatusNotActiveExseption;
 import com.company.repository.FilialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,6 +54,9 @@ public class FilialService {
         Optional<FilialEntity> optional = filialRepository.findByName(name);
         if (optional.isEmpty()) {
             throw new ItemNotFoundExseption("Filial not found");
+        }
+        if (optional.get().getStatus().equals(FilialStatus.close)){
+            throw new StatusNotActiveExseption("Status not active");
         }
         return toDTO(optional.get());
     }

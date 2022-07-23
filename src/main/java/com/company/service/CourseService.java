@@ -38,22 +38,10 @@ public class CourseService {
         if (optional.isEmpty()){
             throw new ItemNotFoundExseption("Course Already Created pls replay");
         }
-        return optional.get();
-    }
-
-    public CourseDTO update(CourseDTO dto, String name){
-        Optional<CourseEntity> optional = courseRepository.findByName(name);
-        if (optional.isEmpty()){
-            throw new ItemNotFoundExseption("Course Already Created pls replay");
+        if (optional.get().getStatus().equals(CourseStatus.close)){
+            throw new StatusNotActiveExseption("Status not active");
         }
-        CourseEntity entity = optional.get();
-        entity.setName(dto.getName());
-        entity.setBalance(dto.getBalance());
-        entity.setStatus(CourseStatus.open);
-        entity.setCreateData(LocalDateTime.now());
-        courseRepository.save(entity);
-        dto.setId(entity.getId());
-        return dto;
+        return optional.get();
     }
 
     public Boolean delete(String name){

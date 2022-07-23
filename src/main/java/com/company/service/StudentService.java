@@ -4,8 +4,10 @@ import com.company.dto.MailDTO;
 import com.company.dto.StudentDTO;
 import com.company.entity.SendMailEntity;
 import com.company.entity.StudentEntity;
+import com.company.enums.FilialStatus;
 import com.company.enums.StudentStatus;
 import com.company.exp.ItemNotFoundExseption;
+import com.company.exp.StatusNotActiveExseption;
 import com.company.exp.StudentAlreadyCreatedExseption;
 import com.company.exp.StudentStatusChangeExseption;
 import com.company.repository.SendMailRepository;
@@ -59,6 +61,9 @@ public class StudentService {
         if (optional.isEmpty()) {
             throw new ItemNotFoundExseption("student not found");
         }
+        if (optional.get().getStatus().equals(StudentStatus.no_read)){
+            throw new StatusNotActiveExseption("Status not active");
+        }
         return toDTO(optional.get());
     }
 
@@ -111,7 +116,7 @@ public class StudentService {
     public void sendMessage(String to) {
 
         Optional<StudentEntity> entity = studentRepository.findByEmail(to);
-        if (entity.isPresent()) {
+        if (entity.isPresent() && entity.get().getStatus().equals(StudentStatus.read)) {
             MailDTO mail = new MailDTO();
             mail.setFrom("lefree111@mail.ru");
             mail.setTo(to);

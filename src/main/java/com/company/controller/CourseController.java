@@ -18,11 +18,6 @@ public class CourseController {
         return ResponseEntity.ok(courseService.create(dto));
     }
 
-    @PutMapping("/update/{name}")
-    public ResponseEntity<?> update(@RequestBody CourseDTO dto, @PathVariable("name") String name){
-        return ResponseEntity.ok(courseService.update(dto, name));
-    }
-
     @GetMapping("/getById/{name}")
     public ResponseEntity<?> getById(@PathVariable("name") String name){
         return ResponseEntity.ok(courseService.getById(name));
