@@ -1,25 +1,25 @@
 package com.company.controller;
 
-import com.company.dto.FilialDTO;
-import com.company.service.FilialService;
+import com.company.dto.BranchDTO;
+import com.company.service.Branchervice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/filial")
-public class FilialController {
+public class BranchController {
 
     @Autowired
-    private FilialService filialService;
+    private Branchervice filialService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody FilialDTO dto){
+    public ResponseEntity<?> create(@RequestBody BranchDTO dto){
         return ResponseEntity.ok(filialService.create(dto));
     }
 
     @PutMapping("/update/{name}")
-    public ResponseEntity<?> update(@RequestBody FilialDTO dto, @PathVariable("name") String name){
+    public ResponseEntity<?> update(@RequestBody BranchDTO dto, @PathVariable("name") String name){
         return ResponseEntity.ok(filialService.update(dto, name));
     }
 

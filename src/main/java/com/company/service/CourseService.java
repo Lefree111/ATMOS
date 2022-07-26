@@ -26,6 +26,7 @@ public class CourseService {
         CourseEntity entity = new CourseEntity();
         entity.setName(dto.getName());
         entity.setBalance(dto.getBalance());
+        entity.setGroup_id(dto.getGroup_id());
         entity.setStatus(CourseStatus.open);
         entity.setCreateData(LocalDateTime.now());
         courseRepository.save(entity);

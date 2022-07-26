@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "teacher")
+@Table(name = "worker")
 public class WorkerEntity {
     @Id
     @GeneratedValue(generator="system-uuid")

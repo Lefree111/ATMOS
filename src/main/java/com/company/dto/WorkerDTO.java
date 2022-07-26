@@ -1,5 +1,6 @@
 package com.company.dto;
 
+import com.company.entity.BranchEntity;
 import com.company.enums.WorkerStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
@@ -14,6 +15,7 @@ public class WorkerDTO {
     private String surname;
     private String username;
     private Integer phone;
+    private BranchEntity branch_id;
     private String email;
     private String expert;
     private Integer sale;

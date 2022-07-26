@@ -1,7 +1,6 @@
 package com.company.entity;
 
 import com.company.enums.StudentStatus;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -16,8 +15,8 @@ import java.time.LocalDateTime;
 public class StudentEntity {
 
     @Id
-    @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     @Column(name = "id", unique = true)
     private String id;
 
@@ -42,4 +41,8 @@ public class StudentEntity {
     private LocalDateTime createDate;
     @Column
     private LocalDateTime updateDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "filial_id")
+    private BranchEntity branch;
 }

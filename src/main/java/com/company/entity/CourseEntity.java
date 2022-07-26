@@ -25,4 +25,8 @@ public class CourseEntity {
     private CourseStatus status;
     @Column
     private LocalDateTime createData;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_id",insertable = false,updatable = false)
+    private GroupEntity group_id;
 }

@@ -47,6 +47,7 @@ public class StudentService {
         entity.setEmail(dto.getEmail());
         entity.setPassword(dto.getPassword());
         entity.setPhone(dto.getPhone());
+        entity.setBranch(dto.getBranch_id());
         entity.setBalance(dto.getBalance());
         entity.setStatus(StudentStatus.read);
         entity.setCreateDate(LocalDateTime.now());
@@ -82,6 +83,7 @@ public class StudentService {
         entity.setSurname(dto.getSurname());
         entity.setUsername(dto.getUsername());
         entity.setEmail(dto.getEmail());
+        entity.setBranch(dto.getBranch_id());
         entity.setPassword(dto.getPassword());
         entity.setUpdateDate(LocalDateTime.now());
         studentRepository.save(entity);
@@ -145,6 +147,7 @@ public class StudentService {
         dto.setSurname(entity.getSurname());
         dto.setUsername(entity.getUsername());
         dto.setEmail(entity.getEmail());
+        dto.setBranch_id(entity.getBranch());
         dto.setPassword(entity.getPassword());
         dto.setPhone(entity.getPhone());
         dto.setStatus(entity.getStatus());
