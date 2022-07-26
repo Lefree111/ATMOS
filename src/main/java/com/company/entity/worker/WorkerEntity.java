@@ -1,4 +1,4 @@
-package com.company.entity;
+package com.company.entity.worker;
 
 import com.company.enums.WorkerStatus;
 import lombok.Getter;
@@ -33,9 +33,11 @@ public class WorkerEntity {
     private String expert;
     @Column
     private Integer sale;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private WorkerStatus status;
+
     @Column
     private LocalDateTime createDate;
     @Column

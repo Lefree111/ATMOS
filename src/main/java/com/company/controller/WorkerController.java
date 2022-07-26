@@ -1,6 +1,6 @@
 package com.company.controller;
 
-import com.company.dto.WorkerDTO;
+import com.company.dto.worker.WorkerDTO;
 import com.company.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

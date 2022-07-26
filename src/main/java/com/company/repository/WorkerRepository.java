@@ -1,6 +1,6 @@
 package com.company.repository;
 
-import com.company.entity.WorkerEntity;
+import com.company.entity.worker.WorkerEntity;
 import com.company.enums.WorkerStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

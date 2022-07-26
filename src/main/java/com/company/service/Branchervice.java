@@ -1,8 +1,8 @@
 package com.company.service;
 
 import com.company.repository.BranchRepository;
-import com.company.dto.BranchDTO;
-import com.company.entity.BranchEntity;
+import com.company.dto.filial.BranchDTO;
+import com.company.entity.filial.BranchEntity;
 import com.company.enums.FilialStatus;
 import com.company.exp.FilialAlreadyCreatedExseption;
 import com.company.exp.FilialStatusChangeExseption;
@@ -28,7 +28,6 @@ public class Branchervice {
         }
         BranchEntity entity = new BranchEntity();
         entity.setName(dto.getName());
-        entity.setCourse(dto.getCourse());
         entity.setStatus(FilialStatus.open);
         entity.setCreateDate(LocalDateTime.now());
         branchRepository.save(entity);

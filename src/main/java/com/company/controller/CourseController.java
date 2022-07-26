@@ -1,6 +1,6 @@
 package com.company.controller;
 
-import com.company.dto.CourseDTO;
+import com.company.dto.filial.CourseDTO;
 import com.company.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

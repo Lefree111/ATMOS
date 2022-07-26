@@ -1,4 +1,4 @@
-package com.company.entity;
+package com.company.entity.mail;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;

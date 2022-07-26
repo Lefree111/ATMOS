@@ -1,7 +1,7 @@
 package com.company.service;
 
-import com.company.dto.CourseDTO;
-import com.company.entity.CourseEntity;
+import com.company.dto.filial.CourseDTO;
+import com.company.entity.filial.CourseEntity;
 import com.company.enums.CourseStatus;
 import com.company.exp.CourseAlreadyCreatedExseption;
 import com.company.exp.ItemNotFoundExseption;
@@ -26,7 +26,7 @@ public class CourseService {
         CourseEntity entity = new CourseEntity();
         entity.setName(dto.getName());
         entity.setBalance(dto.getBalance());
-        entity.setGroup_id(dto.getGroup_id());
+        entity.setFilial_id(dto.getFilial_id());
         entity.setStatus(CourseStatus.open);
         entity.setCreateData(LocalDateTime.now());
         courseRepository.save(entity);

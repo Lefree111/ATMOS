@@ -1,4 +1,4 @@
-package com.company.dto;
+package com.company.dto.mail;
 
 import lombok.Data;
 

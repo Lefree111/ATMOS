@@ -1,5 +1,6 @@
-package com.company.entity;
+package com.company.entity.student;
 
+import com.company.entity.filial.BranchEntity;
 import com.company.enums.StudentStatus;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,8 +42,4 @@ public class StudentEntity {
     private LocalDateTime createDate;
     @Column
     private LocalDateTime updateDate;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "filial_id")
-    private BranchEntity branch;
 }

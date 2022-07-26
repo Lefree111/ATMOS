@@ -1,4 +1,4 @@
-package com.company.entity;
+package com.company.entity.filial;
 
 import com.company.enums.CourseStatus;
 import lombok.Data;
@@ -27,6 +27,8 @@ public class CourseEntity {
     private LocalDateTime createData;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "group_id",insertable = false,updatable = false)
-    private GroupEntity group_id;
+    @JoinColumn(name = "filial_id",insertable = false,updatable = false)
+    private BranchEntity filial;
+    @Column(name = "filial_id")
+    private String filial_id;
 }

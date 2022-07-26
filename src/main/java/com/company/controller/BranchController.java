@@ -1,6 +1,6 @@
 package com.company.controller;
 
-import com.company.dto.BranchDTO;
+import com.company.dto.filial.BranchDTO;
 import com.company.service.Branchervice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

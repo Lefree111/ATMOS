@@ -1,6 +1,6 @@
 package com.company.repository;
 
-import com.company.entity.BranchEntity;
+import com.company.entity.filial.BranchEntity;
 import com.company.enums.FilialStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

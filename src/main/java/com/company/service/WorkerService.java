@@ -1,8 +1,7 @@
 package com.company.service;
 
-import com.company.dto.WorkerDTO;
-import com.company.entity.WorkerEntity;
-import com.company.enums.FilialStatus;
+import com.company.dto.worker.WorkerDTO;
+import com.company.entity.worker.WorkerEntity;
 import com.company.enums.WorkerStatus;
 import com.company.exp.ItemNotFoundExseption;
 import com.company.exp.StatusNotActiveExseption;

@@ -1,10 +1,11 @@
-package com.company.entity;
+package com.company.entity.filial;
 
 import com.company.enums.GroupStatus;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -18,21 +19,18 @@ public class GroupEntity {
     @Column
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", insertable = false, updatable = false)
-    private CourseEntity kurs;
-    @Column(name = "course_id")
-    private String kurs_id;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "wor_id", insertable = false, updatable = false)
-    private WorkerEntity wor;
-    @Column(name = "wor_id")
-    private String wor_id;
-
     @Column
     @Enumerated(EnumType.STRING)
     private GroupStatus status;
+
+    @Column
+    private LocalDateTime createDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id",insertable = false,updatable = false)
+    private CourseEntity course;
+    @Column(name = "course_id")
+    private String course_id;
 
 
 }

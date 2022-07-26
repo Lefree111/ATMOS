@@ -1,6 +1,6 @@
 package com.company.repository;
 
-import com.company.entity.StudentEntity;
+import com.company.entity.student.StudentEntity;
 import com.company.enums.StudentStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

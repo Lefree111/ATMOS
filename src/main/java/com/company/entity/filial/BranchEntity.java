@@ -1,6 +1,5 @@
-package com.company.entity;
+package com.company.entity.filial;
 
-import com.company.entity.CourseEntity;
 import com.company.enums.FilialStatus;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
@@ -26,9 +25,4 @@ public class BranchEntity {
     private LocalDateTime createDate;
     @Column
     private LocalDateTime updateDate;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course",insertable = false,updatable = false)
-    private CourseEntity course;
-
 }

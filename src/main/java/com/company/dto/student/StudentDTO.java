@@ -1,25 +1,27 @@
-package com.company.dto;
+package com.company.dto.student;
 
-import com.company.entity.BranchEntity;
-import com.company.enums.WorkerStatus;
+import com.company.entity.filial.BranchEntity;
+import com.company.enums.StudentStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class WorkerDTO {
+public class StudentDTO {
     private String id;
     private String name;
     private String surname;
     private String username;
     private Integer phone;
-    private BranchEntity branch_id;
     private String email;
-    private String expert;
-    private Integer sale;
-    private WorkerStatus status;
+    private String password;
+    private Integer balance;
+    private StudentStatus status;
+
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 }

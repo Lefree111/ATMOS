@@ -1,10 +1,9 @@
 package com.company.service;
 
-import com.company.dto.MailDTO;
-import com.company.dto.StudentDTO;
-import com.company.entity.SendMailEntity;
-import com.company.entity.StudentEntity;
-import com.company.enums.FilialStatus;
+import com.company.dto.mail.MailDTO;
+import com.company.dto.student.StudentDTO;
+import com.company.entity.mail.SendMailEntity;
+import com.company.entity.student.StudentEntity;
 import com.company.enums.StudentStatus;
 import com.company.exp.ItemNotFoundExseption;
 import com.company.exp.StatusNotActiveExseption;
@@ -47,7 +46,6 @@ public class StudentService {
         entity.setEmail(dto.getEmail());
         entity.setPassword(dto.getPassword());
         entity.setPhone(dto.getPhone());
-        entity.setBranch(dto.getBranch_id());
         entity.setBalance(dto.getBalance());
         entity.setStatus(StudentStatus.read);
         entity.setCreateDate(LocalDateTime.now());
@@ -83,7 +81,6 @@ public class StudentService {
         entity.setSurname(dto.getSurname());
         entity.setUsername(dto.getUsername());
         entity.setEmail(dto.getEmail());
-        entity.setBranch(dto.getBranch_id());
         entity.setPassword(dto.getPassword());
         entity.setUpdateDate(LocalDateTime.now());
         studentRepository.save(entity);
@@ -147,7 +144,6 @@ public class StudentService {
         dto.setSurname(entity.getSurname());
         dto.setUsername(entity.getUsername());
         dto.setEmail(entity.getEmail());
-        dto.setBranch_id(entity.getBranch());
         dto.setPassword(entity.getPassword());
         dto.setPhone(entity.getPhone());
         dto.setStatus(entity.getStatus());

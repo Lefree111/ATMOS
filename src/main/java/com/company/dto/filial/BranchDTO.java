@@ -1,6 +1,5 @@
-package com.company.dto;
+package com.company.dto.filial;
 
-import com.company.entity.CourseEntity;
 import com.company.enums.FilialStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
@@ -12,7 +11,6 @@ import java.time.LocalDateTime;
 public class BranchDTO {
     private String id;
     private String name;
-    private CourseEntity course;
     private FilialStatus status;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;

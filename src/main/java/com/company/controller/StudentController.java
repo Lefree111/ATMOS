@@ -1,6 +1,6 @@
 package com.company.controller;
 
-import com.company.dto.StudentDTO;
+import com.company.dto.student.StudentDTO;
 import com.company.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
